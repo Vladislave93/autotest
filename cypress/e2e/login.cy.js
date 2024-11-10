@@ -4,8 +4,8 @@ describe('проверка авторизации', function () {
     it('верный пароль и верный логин', function () {
          cy.visit('https://login.qa.studio/'); // зашли на сайт 
          cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
-         cy.get('#mail').type('german@dolnikov.ru');
-         cy.get('#pass').type('iLoveqastudio1');
+         cy.get('#mail').type('USER_LOGIN');
+         cy.get('#pass').type('USER_PASSWORD');
          cy.get('#loginButton').click();
          cy.wait(5000);
          cy.get('#messageHeader').contains('Авторизация прошла успешно');
@@ -16,8 +16,8 @@ describe('проверка авторизации', function () {
      it('неверный пароль и верный логин', function () {
         cy.visit('https://login.qa.studio/'); // зашли на сайт 
         cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
-        cy.get('#mail').type('german@dolnikov.ru');
-        cy.get('#pass').type('iLoveqast1udio1');
+        cy.get('#mail').type('USER_LOGIN');
+        cy.get('#pass').type('USER_PASSWORD');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').contains('Такого логина или пароля нет');
         cy.get('#messageHeader').should('be.visible'); // видно пользователю 
@@ -27,8 +27,8 @@ describe('проверка авторизации', function () {
     it('Проверка валидации ', function () {
         cy.visit('https://login.qa.studio/'); // зашли на сайт 
         cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
-        cy.get('#mail').type('germandolnikov.ru'); // логин без @
-        cy.get('#pass').type('iLoveqastudio1');
+        cy.get('#mail').type('USER_LOGIN'); // логин без @
+        cy.get('#pass').type('USER_PASSWORD');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').contains('Нужно исправить проблему валидации');
         cy.get('#messageHeader').should('be.visible'); // видно пользователю 
@@ -40,7 +40,7 @@ describe('проверка авторизации', function () {
         cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
 
         cy.get('#forgotEmailButton').click(); // нажимаю восс. пароль 
-        cy.get('#mailForgot').type('german@dolnikov.ru');
+        cy.get('#mailForgot').type('USER_LOGIN');
         cy.get('#restoreEmailButton').click();
         cy.get('#messageHeader').contains('Успешно отправили пароль на e-mail'); //  проверка текста 
         cy.get('#messageHeader').should('be.visible'); // видно пользователю 
@@ -50,8 +50,8 @@ describe('проверка авторизации', function () {
     it('верный пароль и неверный логин', function () {
         cy.visit('https://login.qa.studio/'); // зашли на сайт 
         cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
-        cy.get('#mail').type('german@dolnikovv.ru'); // неверная почта 
-        cy.get('#pass').type('iLoveqastudio1');
+        cy.get('#mail').type('USER_LOGIN'); // неверная почта 
+        cy.get('#pass').type('USER_PASSWORD');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').contains('Такого логина или пароля нет');
         cy.get('#messageHeader').should('be.visible'); // видно пользователю 
@@ -61,8 +61,8 @@ describe('проверка авторизации', function () {
     it('верный пароль и верный логин 2', function () {
         cy.visit('https://login.qa.studio/'); // зашли на сайт 
         cy.get('#forgotEmailButton').should('have.css','color','rgb(0, 85, 152)'); // цвет кнопки 'восстановить пароль'
-        cy.get('#mail').type('GerMan@Dolnikov.ru');
-        cy.get('#pass').type('iLoveqastudio1');
+        cy.get('#mail').type('USER_LOGIN');
+        cy.get('#pass').type('USER_PASSWORD');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').contains('Авторизация прошла успешно');
         cy.get('#messageHeader').should('be.visible'); // видно пользователю 
